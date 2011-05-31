@@ -15,8 +15,6 @@ edu.stanford.math.plex4.homology.interfaces
 edu.stanford.math.plex4.homology.nonautogen
 edu.stanford.math.plex4.homology.utility
 edu.stanford.math.plex4.homology.zigzag
-edu.stanford.math.plex4.homology.zigzag.bootstrap
-edu.stanford.math.plex4.homology.zigzag.deprecated
 edu.stanford.math.plex4.interop
 edu.stanford.math.plex4.io
 edu.stanford.math.plex4.kd
