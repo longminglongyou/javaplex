@@ -1,0 +1,57 @@
+
+\documentclass[12pt]{amsart}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amsxtra}
+\usepackage{amstext}
+\usepackage{amssymb}
+\usepackage{amscd}
+\usepackage{amsthm}
+\usepackage{hyperref}
+
+\newtheorem{remark}{Remark}
+\newtheorem{definition}{Definition}
+\newtheorem{proposition}{Proposition}
+\newtheorem{corollary}{Corollary}
+\newtheorem{claim}{Claim}
+\newtheorem{lemma}{Lemma}
+\newtheorem{example}{Example}
+
+\newcommand{\image}{\operatorname{im}}
+\newcommand{\preimage}{\operatorname{pre}}
+\newcommand{\Hom}{\operatorname{Hom}}
+\newcommand{\Ext}{\operatorname{Ext}}
+\newcommand{\rank}{\operatorname{rank}}
+
+\newcommand{\prob}[1]{\mathbf{P}\left(#1\right)}
+\newcommand{\expect}[1]{\mathbf{E}\left[#1\right]}
+\newcommand{\expb}[1]{\exp\left(#1\right)}
+\newcommand{\indicator}[1]{\mathbb{I}_{#1}}
+\newcommand{\pd}[1]{\frac{\partial}{\partial #1}}
+\newcommand{\pdd}[1]{\frac{\partial^2}{\partial #1^2}}
+\newcommand{\esssup}{\operatorname{ess sup}}
+
+\title{A Brief Description of the JavaPlex Software Package}
+
+\author{Andrew Tausz}
+\address{Stanford University, Stanford, CA, 94305}
+\email{atausz@stanford.edu}
+
+\date{\today}
+
+\begin{document}
+
+\begin{abstract}
+We give a brief description of the internals of the JavaPlex software package.
+\end{abstract}
+
+\maketitle
+
+\input{javaplex_contents}
+
+\bibliographystyle{amsalpha}
+\bibliography{biblio}
+
+\end{document}

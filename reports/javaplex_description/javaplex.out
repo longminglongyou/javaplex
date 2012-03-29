@@ -1,0 +1,12 @@
+\BOOKMARK [1][-]{section.1}{1. Introduction}{}
+\BOOKMARK [1][-]{section.2}{2. Architecture}{}
+\BOOKMARK [2][-]{subsection.2.1}{2.1. Overall Structure}{section.2}
+\BOOKMARK [1][-]{section.3}{3. Fundamental Interfaces and Classes}{}
+\BOOKMARK [2][-]{subsection.3.1}{3.1. Basis Elements and Filtered Chain Complexes}{section.3}
+\BOOKMARK [2][-]{subsection.3.2}{3.2. Persistent Homology}{section.3}
+\BOOKMARK [2][-]{subsection.3.3}{3.3. Streams Derived from Metric Spaces}{section.3}
+\BOOKMARK [1][-]{section.4}{4. Tests and Verification}{}
+\BOOKMARK [1][-]{section.5}{5. A Brief Word on Efficiency}{}
+\BOOKMARK [1][-]{section.6}{6. Extension Examples}{}
+\BOOKMARK [1][-]{section.7}{7. Key Differences from jPlex}{}
+\BOOKMARK [1][-]{section*.1}{References}{}

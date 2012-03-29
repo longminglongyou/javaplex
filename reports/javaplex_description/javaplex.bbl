@@ -1,0 +1,18 @@
+\providecommand{\bysame}{\leavevmode\hbox to3em{\hrulefill}\thinspace}
+\providecommand{\MR}{\relax\ifhmode\unskip\space\fi MR }
+% \MRhref is called by the amsart/book/proc definition of \MR.
+\providecommand{\MRhref}[2]{%
+  \href{http://www.ams.org/mathscinet-getitem?mr=#1}{#2}
+}
+\providecommand{\href}[2]{#2}
+\begin{thebibliography}{dSMVJ10}
+
+\bibitem[dSMVJ10]{Dualities}
+Vin de~Silva, Dmitriy Morozov, and Mikael Vejdemo-Johansson, \emph{{Dualities
+  in persistent (co)homology}}, Unpublished manuscript, 2010.
+
+\bibitem[ZC05]{Carlsson_04}
+Afra Zomorodian and Gunnar Carlsson, \emph{Computing persistent homology},
+  Discrete Comput. Geom \textbf{33} (2005), 249--274.
+
+\end{thebibliography}
