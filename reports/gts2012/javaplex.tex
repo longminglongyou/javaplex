@@ -1,0 +1,165 @@
+\documentclass[11pt]{amsart}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amsxtra}
+\usepackage{amstext}
+\usepackage{amssymb}
+\usepackage{amscd}
+\usepackage{amsthm}
+\usepackage{hyperref}
+\usepackage{xspace}
+\usepackage{amsaddr}
+
+\newtheorem{remark}{Remark}
+\newtheorem{definition}{Definition}
+\newtheorem{proposition}{Proposition}
+\newtheorem{corollary}{Corollary}
+\newtheorem{claim}{Claim}
+\newtheorem{lemma}{Lemma}
+\newtheorem{example}{Example}
+
+\newcommand{\image}{\operatorname{im}}
+\newcommand{\preimage}{\operatorname{pre}}
+\newcommand{\Hom}{\operatorname{Hom}}
+\newcommand{\Ext}{\operatorname{Ext}}
+\newcommand{\rank}{\operatorname{rank}}
+
+\newcommand{\prob}[1]{\mathbf{P}\left(#1\right)}
+\newcommand{\expect}[1]{\mathbf{E}\left[#1\right]}
+\newcommand{\expb}[1]{\exp\left(#1\right)}
+\newcommand{\indicator}[1]{\mathbb{I}_{#1}}
+\newcommand{\pd}[1]{\frac{\partial}{\partial #1}}
+\newcommand{\pdd}[1]{\frac{\partial^2}{\partial #1^2}}
+\newcommand{\esssup}{\operatorname{ess sup}}
+
+\newcommand\jPlex{\texttt{jPlex}\xspace}
+\newcommand\javaPlex{\texttt{javaPlex}\xspace}
+
+\begin{document}
+
+
+\title{\javaPlex: a research platform for persistent homology }
+
+\author{Andrew Tausz}
+\address{Stanford University, Stanford, CA, 94305}
+\email{atausz@stanford.edu}
+
+\author{Mikael Vejdemo-Johansson}
+\address{School of Computer Science; University of St Andrews; Scotland}
+
+\date{\today}
+
+\begin{abstract}
+  The \javaPlex software package continues the Stanford tradition of software for persistent homology and cohomology computation with tight integration into Matlab. \javaPlex in particular is built with explicit aims for ease of use as a tool for research into computational topology, and is available under an open source license, and with extensive source code documentation.
+
+  The main design aim through the construction of \javaPlex has been the ease of extension of the program package -- lowering the threshold to implement new algorithms or insights from ongoing research into computational topology in a framework that provides most if not all current persistence algorithms in a single interface.
+\end{abstract}
+
+\maketitle
+
+\section{Introduction and Licensing}
+
+\javaPlex was created due to the developments in topological data analysis and computational topology over the past few years. It is an open source package, available through Google Code\footnote{\url{http://code.google.com/p/javaplex}}. The \javaPlex package is issued under the New BSD License\footnote{\url{http://www.opensource.org/licenses/bsd-license.php}}. 
+
+\section{Architecture}
+
+The choice of architecture for the program library reflects the ambition to provide a platform for ongoing research with \javaPlex. 
+
+\subsection{Overall Structure}
+
+In a nutshell, the two main capabilities of \javaPlex are:
+\begin{itemize}
+\item the computation of the persistent homology of filtered chain complexes of finite vector spaces
+\item the automated construction of filtered complexes from geometric data 
+\end{itemize}
+
+We expect most users of \javaPlex to go through the ``standard'' persistent homology pipeline: compute persistent simplicial homology of complexes constructed from point cloud data using Vietoris-Rips or witness complexes. The internal structure, however, anticipates further extensions.
+
+\section{Fundamental Interfaces and Classes}
+\subsection{Basis Elements and Filtered Chain Complexes}
+
+Let us start with the essential core: the notion of a basis element in a chain complex. The two main data attached to such an object are its homological dimension (where it fits into the complex) and its boundary. The  \texttt{PrimitiveBasisElement} interface defines the behavior of such an object by mandating the implementation of the  \texttt{getDimension} function, as well as the  \texttt{getBoundaryArray} and  \texttt{getBoundaryCoefficients} functions. Any boundary map should square to 0.
+
+The two main implementations of the  \texttt{PrimitiveBasisElement} interface are the  \texttt{Simplex} and  \texttt{Cell} classes. The first provides the functionality of a standard n-simplex where the boundary is the oriented sum of its faces. Note that unlike in \jPlex, \javaPlex has no restrictions on the dimensionality of a simplex. The  \texttt{Cell} class implements the functionality of a cell within a CW complex. In general, the prescription of the boundary of a cell is more cumbersome since it may require the specification of the degree of each attaching map. Nevertheless, cell complexes provide a significantly more compact representation of various topological spaces than simplicial complexes. At the moment, there are no automated methods for constructing cell complexes out of geometric data as there are with simplicial complexes.
+
+The next essential interface is the  \texttt{AbstractFilteredStream}. This abstracts the notion of a filtered chain complex of finite dimensional vector spaces. As with the mathematical notion of a chain complex, it defines both the terms in the complex (the vector spaces) as well as the connecting morphisms (the boundary maps) as follows:
+
+\begin{itemize}
+\item Access to the basis elements for the terms in the filtered complex are provided through an iterator. In particular, this interface extends the  \texttt{Iterable} interface which allows for convenient iteration. Implementing classes must provide the basis elements for the filtered complex in increasing order, where the ordering is lexicographical first on the filtration index, and then on the dimension.
+\item The boundary operators are provided by the  \texttt{getBoundary} and  \texttt{getBoundaryCoefficients} functions, which return the basis elements in the boundary as well as the coefficients.
+\item An implementation of the  \texttt{AbstractFilteredStream} interface must also provide methods for obtaining the filtration index and homological dimension of a given basis element. Note that this filtration information is divorced in the object hierarchy from the \texttt{Cell} or \texttt{Simplex} representations.
+\end{itemize}
+
+The separation of filtration information and cell representations provides for a cleaner abstraction: the same complex may be given different filtrations; and chain equality can be tested without having to know filtration indices, to name a few direct benefits. There is an abstract subclass of \texttt{AbstractFilteredStream} that provides the notion of such a context.
+
+The  \texttt{PrimitiveStream} class inherits from  \texttt{AbstractFilteredStream}, and provides the default values for the dimension and boundary functionality based on the geometric properties of the given basis element.
+
+Keeping the functionalities separate provides for a platform where non-standard boundary behaviours are far easier to implement. Many important constructions -- tensor products, hom complexes, shifted complexes, direct sums, mapping cylinders, etc -- have notions of dimension and boundary that are distinct from a geometric interpretation but derived from the underlying complexes. We provide implementations already for tensor products, hom complexes and dual complexes.
+
+\subsection{Persistent Homology}
+
+The main interfaces of importance here are  \texttt{Abstract\-Persistence\-Algorithm} and  \texttt{Abstract\-Persistence\-Basis\-Algorithm}. The first one requires the implementation of a function called  \texttt{computeIntervals} which takes in a  \texttt{AbstractFilteredStream} and returns a barcode collection. The second one has an additional function,  \texttt{computeAnnotatedIntervals}, that returns generators along with each interval.
+
+There are a number of different implementations of the above interfaces. The main two sources of which are the algorithms presented in the papers \cite{Carlsson_04, Dualities}. Furthermore, each of them are implemented over different coefficient types, with specialized implementations for $\mathbb{Z}/2\mathbb{Z}$ coefficients. We provide a well-tested default choice in \texttt{getDefaultSimplicialAlgorithm} and similar functions in the interface class \texttt{Plex4}.
+
+\subsection{Streams Derived from Metric Spaces}
+
+In actual application areas for persistent homology, there are some standard constructions commonly used. \javaPlex has available implementations of the Vietoris-Rips, the witness and the lazy witness complex constructions, provided by the  \texttt{VietorisRipsStream},  \texttt{WitnessStream} and  \texttt{LazyWitnessStream} classes. 
+
+As input to all of these classes, a user provides either a metric space -- implementing the \texttt{AbstractSearchableMetricSpace} interface -- or uses an accessor function in \texttt{Plex4} using the Euclidean distance on a point cloud.
+
+The  \texttt{AbstractSearchableMetricSpace} interface basically defines the functionality of a finite metric space in which one can perform queries for nearest neighbors, $k$-nearest neighbors, and fixed-radius neighborhoods. We provide implementations in \texttt{EuclideanMetricSpace}, performing all operations using the standard Euclidean distance on arrays of doubles, an implementation based on KD-trees, and an implementation in \texttt{ExplicitMetricSpace} that requires a user-supplied distance matrix. 
+
+The classes  \texttt{ExplicitSimplexStream} and  \texttt{ExplicitCellStream} implement the  \texttt{Abstract\-Searchable\-Metric\-Space} interface as well, and provide the user with convenient functions for building their own custom filtered complexes.
+
+\section{Tests and Verification}
+
+In order to ensure that \javaPlex performs adequately in terms of correctness and efficiency, there are a number of tests implemented. We do not talk about all of them here (an interested reader may consult the src\_test folder), but we describe the most important one. The class  \texttt{Persistence\-Algorithm\-Equality\-Test} verifies the integrity of the persistent homology computations as follows. It generates several random test spaces and constructs various filtered simplicial complexes from them. It then runs all of the available persistent homology algorithms, including the one from the previous version (jPlex), on the datasets. Then it compares the resulting barcodes to make sure that they are all identical. The examples range from the trivial (a triangle) to complexes with several hundred thousand simplices.
+
+\section{A Brief Word on Efficiency}
+
+Although efficiency is not one of the main goals of \javaPlex, good algorithms were selected according to the latest advances in the research literature. With this in mind, we would like to highlight a few key points:
+
+\begin{itemize}
+\item Simplicial complexes, especially those generated from point-cloud data, are large. For example, a minimal simplicial 16-sphere (the boundary of a standard 17-simplex) contains 262142 simplices. The $k$-skeleton of a point set containing $n$ points has $O(n^k)$ simplices.
+\item Careless parameter choices can easily create extremely large complexes. For instance, the computation of persistent homology for a Vietoris-Rips complex on a 1000-point data set can, with a large enough cutoff parameter, easily stretch into millions of simplices.
+\item One important recommendation is to use small values for the maximum filtration value, and maximum dimension and scale them up gradually, observing the behaviour as you go. The witness and lazy-witness constructions are also very helpful in capturing the homological features of a dataset with far fewer simplices.
+\item Since \javaPlex is implemented in Java, it comes with the associated overhead costs. 
+\end{itemize}
+
+Developing software that is reliable, extensible and efficient is difficult. Furthermore, once a program is working it is possible to put virtually unlimited amount of effort to making it run as efficiently as possible. The current version of \javaPlex in fact scales better for computing persistent homology than its predecessor jPlex. Nevertheless, improving efficiency is an ongoing process.
+
+\section{Extension Examples}
+
+The design of \javaPlex around a few key interfaces makes extension of the library relatively easy. Suppose we wanted to implement a shifted chain complex. One way would be to subclass \texttt{Abstract\-Filtered\-Stream} with a member variable of the subclass of type \texttt{Abstract\-Filtered\-Stream} carrying the ``underlying'' complex, such that any calls to member functions use the corresponding calls to the member complex and some additional arithmetic to adjust the return values of \texttt{getDimension}.
+
+Another way would be to inherit from the \texttt{PrimitiveStream} interface to build a filtered stream construction in a fundamentally different manner.
+
+\section{Key Differences from jPlex}
+
+In this section we list some key differences between jPlex and \javaPlex
+
+\begin{itemize}
+\item In \jPlex, a maximum filtration value and a granularity \texttt{delta} were used to specify a Vietoris-Rips complex. In \javaPlex, in contrast, we use a number of divisions instead of a granularity size, and thus eliminate the need to recalculate the granularity each computation. 
+\item \javaPlex returns intervals with filtration indices and not filtration values by default. The conversion is easy with library functionality, but not done by default since several situations require integer indices rather than floating point values for the filtration function.
+\item Whereas \jPlex did some conversions between 0-based and 1-based arrays -- largely to make the user interface towards Matlab easier to work with -- the interface in \javaPlex is completely consistent in its array indexing conventions.
+\item The dimension of simplices in \jPlex was limited to 7. There is no such limitation in \javaPlex.
+\item Persistent homology in \javaPlex can be computed over arbitrary fields. Additionally, it has specialized implementations for $\mathbb{Z}/p\mathbb{Z}$ and $\mathbb{Z}/2\mathbb{Z}$.
+\item \javaPlex does not display barcodes in GUI windows. Instead it just saves them directly to file in png format.
+\item Filtration data in \javaPlex is not stored with the simplex (or basis element), but rather it is stored in the stream (the filtered complex). The reason for this choice is that this allows one to do homological operations on chain complexes that would not be possible otherwise. 
+\end{itemize}
+
+
+
+\bibliographystyle{amsalpha}
+\bibliography{biblio}
+
+\end{document}
+
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: t
+%%% End: 
