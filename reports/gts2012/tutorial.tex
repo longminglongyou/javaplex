@@ -1,0 +1,91 @@
+\documentclass{amsart}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amsxtra}
+\usepackage{amstext}
+\usepackage{amssymb}
+\usepackage{amscd}
+\usepackage{amsthm}
+\usepackage{hyperref}
+\usepackage{xspace}
+\usepackage{amsaddr}
+\usepackage{url}
+
+\newtheorem{remark}{Remark}
+\newtheorem{definition}{Definition}
+\newtheorem{proposition}{Proposition}
+\newtheorem{corollary}{Corollary}
+\newtheorem{claim}{Claim}
+\newtheorem{lemma}{Lemma}
+\newtheorem{example}{Example}
+
+\newcommand{\image}{\operatorname{im}}
+\newcommand{\preimage}{\operatorname{pre}}
+\newcommand{\Hom}{\operatorname{Hom}}
+\newcommand{\Ext}{\operatorname{Ext}}
+\newcommand{\rank}{\operatorname{rank}}
+
+\newcommand{\prob}[1]{\mathbf{P}\left(#1\right)}
+\newcommand{\expect}[1]{\mathbf{E}\left[#1\right]}
+\newcommand{\expb}[1]{\exp\left(#1\right)}
+\newcommand{\indicator}[1]{\mathbb{I}_{#1}}
+\newcommand{\pd}[1]{\frac{\partial}{\partial #1}}
+\newcommand{\pdd}[1]{\frac{\partial^2}{\partial #1^2}}
+\newcommand{\esssup}{\operatorname{ess sup}}
+
+\newcommand\jPlex{\texttt{jPlex}\xspace}
+\newcommand\javaPlex{\texttt{javaPlex}\xspace}
+
+\begin{document}
+
+\title{Topological Data Analysis in Matlab \\ a javaPlex tutorial proposal}
+\author{Andrew Tausz}
+\address{Stanford University}
+\author{Henry Adams}
+\address{Stanford University}
+\author{Mikael Vejdemo-Johansson}
+\address{University of St Andrews}
+\date{\today}
+\maketitle
+
+
+We propose to run a tutorial for \javaPlex at GTS 2012 that will bring participants up to working speed in applying \javaPlex to topological data analysis problems. Furthermore, we will demonstrate how to extend the functionality of \javaPlex and tie in new code with the existing interfaces and algorithms.
+
+The tutorial will be based on the written tutorial produced by Henry Adams for \jPlex and updated for \javaPlex, available from the \javaPlex website\footnote{\url{http://code.google.com/p/javaplex}}.
+
+\javaPlex is a tool for persistent homology and related techniques, and we will focus the demonstration on the computation and interpretation of persistent homology.
+
+\section{Basic usage}
+\label{sec:basic-usage}
+
+We will demonstrate on hand of small and easy to describe examples how to setup and perform a persistent homology computation. Easiest for entering a small toy example is to use the \texttt{ExplicitStream} representation and just enter the simplices and their filtration values by hand. 
+
+Building up from this, once a persistent homology computation has been performed, we will start looking at different simplex stream construction methods -- such as the implementations of Vietoris-Rips and witness complexes. 
+
+\section{Topological Data Analysis}
+\label{sec:topol-data-analys}
+
+A striking example of the power of topological data analysis comes in the shape of the Mumford-Lee-Pedersen data set, consisting of normalized $3\times 3$ pixel patches from natural images. As a demonstrational example, we shall use a prepared point sample from this data set that has been filtered by point density in order to actually exhibit interesting behaviour.
+
+Computing with this subsampling allows us to see what the output from \javaPlex and computational effort look like on a real data set. 
+
+\section{Extending the system}
+\label{sec:extending-system}
+
+Finally, to show the strengths of \javaPlex for ongoing research into computational topology, we shall demonstrate a simple extension of the capabilities of the system. We will implement a derived chain complex type and see how this changed type changes the computation procedure -- with special emphasis on which structures remain the same for the computational process with a modification in place.
+
+\section{Tech requirements}
+\label{sec:tech-requirements}
+
+For this tutorial, we will require each participant to have a working Java developer environment, preferably running Java 1.6.x, as well as either Jython or Matlab.
+
+We are currently talking to Mathworks to see if a temporary license can be issued to the participants of GTS. If this is the case, we will be able to help any participant not bringing a Matlab installation themselves to get setup for the conference tutorial session. 
+
+\end{document}
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: t
+%%% End: 
