@@ -1,0 +1,120 @@
+\documentclass{gts2012}
+
+% The packages graphicx, amssymb, and amsmath are already loaded via
+% gts2012.cls
+
+%----------------------- Macros and Definitions --------------------------
+
+% Add all additional macros here, do NOT include any additional files.
+
+% The environments theorem (Theorem), invar (Invariant), lemma (Lemma),
+% cor (Corollary), obs (Observation), conj (Conjecture), prop 
+% (Proposition), defini (Definition), and proof (Proof) are already defined 
+% in the eurocg12.cls file. Add additional environments only if you REALLY 
+% need them.
+
+%----------------------- Title -------------------------------------------
+
+\title{An Example Contribution for GTS2012}
+
+\author{Sylvia Example\thanks{Department of Computer Science,
+        Important University, {\tt sexample@cs.important.at}}
+        \and
+        Anton Veryknown\thanks{Department of Mathematics and Computer
+        Science, University of Somewhere, {\tt averyknown@math.somewhere.es}}}
+
+%------------------------------ Text -------------------------------------
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+  You may add here an abstract for your paper. This is entirely
+  optional and unless you have already included an abstract in your
+  original submission, just disregard it.
+\end{abstract}
+
+\section{Introduction}
+
+Well, the usual \ldots\ and also some citations, see~\cite{g-atpwog-2006}  \ldots\
+Large parts of this document are stolen from~\cite{s-eef-2008}.
+
+\begin{conj}
+Could it really be like this?
+\end{conj}
+\begin{obs}
+Probably not  \ldots\
+\end{obs}
+
+\begin{defini}
+Some things are just not definable  \ldots\
+\end{defini}
+
+\begin{theorem}
+This is the most important theorem.
+\end{theorem}
+\begin{proof}
+It even comes with a proof  \ldots\
+\end{proof}
+
+\begin{lemma}
+And then we also found this lemma  \ldots\
+\end{lemma}
+
+There should be some more text explaining research results in some
+additional sections, but since this is only an example file \ldots\ on
+the other hand \ldots\ well, no! But some figures with illustrative
+examples would not hurt, either \ldots\
+
+
+\section{Code examples}
+
+You may use the \texttt{verbatim} \LaTeX\ environment for adding code
+snapshots, or, for that matter any other similar environment.
+\begin{verbatim}
+#include <iostream>
+
+int main()
+{
+  std::cout << "Hello GTS 2012" << std::endl;
+  return 0;
+}
+\end{verbatim}
+
+\section{Dummy section}
+This is dummy section to make the document go to two pages.
+
+\section{Conclusion}
+
+What we did is amazing and improves everything that was there before.
+
+
+\begin{acknowledgments}
+  We would like the thank all the coffee producers of the world for
+  providing programmers with this excellent SDK \ldots
+\end{acknowledgments}
+
+
+%---------------------------- Bibliography -------------------------------
+
+% Please add the contents of the .bbl file 
+
+\footnotesize 
+\bibliographystyle{abbrv}
+
+\begin{thebibliography}{99}
+
+\bibitem{g-atpwog-2006}
+D.~Grace of Florence.
+\newblock {\em All Theories Proven With One Graph.}
+\newblock The Journal of Irreproducible Results, 2006, California, USA.
+
+\bibitem{s-eef-2008}
+B.~Speckmann.
+\newblock {\em EuroCG2008 example file.}
+\newblock http://eurocg08.loria.fr/EuroCG08Exemple.tex, 2008.
+
+\end{thebibliography}
+
+\end{document}
+
