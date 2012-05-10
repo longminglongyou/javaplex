@@ -1,12 +1,15 @@
+
 bsh
 bsh.commands
 edu.stanford.math.plex
 edu.stanford.math.plex4.api
 edu.stanford.math.plex4.autogen.homology
+edu.stanford.math.plex4.bottleneck
 edu.stanford.math.plex4.examples
 edu.stanford.math.plex4.generation
 edu.stanford.math.plex4.graph
 edu.stanford.math.plex4.graph.metric
+edu.stanford.math.plex4.graph.random
 edu.stanford.math.plex4.graph.utility
 edu.stanford.math.plex4.homology.barcodes
 edu.stanford.math.plex4.homology.chain_basis
@@ -16,7 +19,6 @@ edu.stanford.math.plex4.homology.nonautogen
 edu.stanford.math.plex4.homology.utility
 edu.stanford.math.plex4.homology.zigzag
 edu.stanford.math.plex4.homology.zigzag.bootstrap
-edu.stanford.math.plex4.homology.zigzag.deprecated
 edu.stanford.math.plex4.interop
 edu.stanford.math.plex4.io
 edu.stanford.math.plex4.kd
@@ -25,8 +27,10 @@ edu.stanford.math.plex4.metric.interfaces
 edu.stanford.math.plex4.metric.landmark
 edu.stanford.math.plex4.metric.utility
 edu.stanford.math.plex4.streams.derived
+edu.stanford.math.plex4.streams.filter
 edu.stanford.math.plex4.streams.impl
 edu.stanford.math.plex4.streams.interfaces
+edu.stanford.math.plex4.streams.multi
 edu.stanford.math.plex4.streams.storage_structures
 edu.stanford.math.plex4.streams.utility
 edu.stanford.math.plex4.utility
