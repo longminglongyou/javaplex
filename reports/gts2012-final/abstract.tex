@@ -1,7 +1,7 @@
 \documentclass{gts2012}
 
 \usepackage{url}
-
+\usepackage{xspace}
 
 % The packages graphicx, amssymb, and amsmath are already loaded via
 % gts2012.cls
@@ -16,8 +16,8 @@
 % in the eurocg12.cls file. Add additional environments only if you REALLY 
 % need them.
 
-\newcommand\jPlex{\texttt{jPlex}\ }
-\newcommand\javaPlex{\texttt{javaPlex}\ }
+\newcommand\jPlex{\texttt{jPlex}\xspace}
+\newcommand\javaPlex{\texttt{javaPlex}\xspace}
 
 \newcommand{\VR}{\operatorname{VR}}
 \newcommand{\LW}{\operatorname{LW}}
@@ -57,7 +57,7 @@ The main design aim in the construction of \javaPlex has been ease of extension 
 The main reason for the existence of \javaPlex is to provide researchers in the area of topological data analysis a unified software library to support their investigations. With this in mind, the design goals for it are as follows:
 
 \begin{itemize}
-\item {\bf Support for new directions for research: } The main goal of the \javaPlex package is to provide an extensible base to support new avenues for research in computational homology and data analysis. While its predecesor \jPlex was very well suited towards computing simplicial homology, its design made extension difficult.
+\item {\bf Support for new directions for research: } The main goal of the \javaPlex package is to provide an extensible base to support new avenues for research in computational homology and data analysis. While its predecessor \jPlex was very well suited towards computing simplicial homology, its design made extension difficult.
 \item {\bf Interoperability: } \javaPlex can be run either as a Java application, or it can be called from any Java compatible language. Supported languages include Matlab, Jython and Processing.
 \item {\bf Adherence to generally accepted software engineering practices: } As a means to realizing the first goal, the \javaPlex software package was designed and implemented with software engineering best-practices. Emphasis was placed on maintainability, modularity and reusability of the different parts of the code.
 \end{itemize}
@@ -70,7 +70,8 @@ We refer the reader to~\cite{Carlsson_09} for a very readable introduction to th
 
 \section{Related Platforms}
 
-The two platforms similar in capability and spirit to \javaPlex are Dionysus and GAP persistence. Dionysus contains state-of-the-art implementations of the standard algorithms for persistent topology and topological data analysis. While Dionysus may have an edge in terms of computational speed (especially since it is written in C++), \javaPlex is written so that it is maximally accessible to newcomers to the field of computational topology. GAP persistence is a new package developed by one of the authors which presents similar algorithms in the context of a computer algebra package.
+% There are a number of other platforms we decline to mention: HAP, ChomP, MAGMA, as well as more or less private code repositories from various people, including Zomorodian's private package and Skraba's private package.
+Two platforms similar in capability and spirit to \javaPlex are Dionysus and GAP persistence. Dionysus contains state-of-the-art implementations of the standard algorithms for persistent topology and topological data analysis. While Dionysus may have an edge in terms of computational speed (especially since it is written in C++), \javaPlex is written so that it is maximally accessible to newcomers to the field of computational topology. GAP persistence is a new package developed by one of the authors which presents similar algorithms in the context of the group-theoretic computer algebra system GAP.
 
 %\section{Architecture}
 %The choice of architecture for the program library reflects the ambition to provide a platform for ongoing research with \javaPlex. 
@@ -177,7 +178,7 @@ is a simplicial $k$-chain.
 
 \section{Filtered Complex Generation}
 
-As mentioned in the abstract, the primary function of \javaPlex is the construction of filtered chain complexes of vector spaces associated to actual point cloud datasets. The motivation for such constructions is that they provide a persistent model of the dataset in question across all scales. \javaPlex currently supports the construction of two main types of filtered simplicial complexes: the Vietoris-Rips and lazy-witness constructions. To begin, suppose that we have a finite metric space $(\mathcal{X}, d)$. In practice, it is possible that $\mathcal{X}$ is a set of points in Euclidean space, although this is not necessary.
+As mentioned in the abstract, one of the primary function of \javaPlex is the construction of filtered chain complexes of vector spaces associated to actual point cloud datasets. The motivation for such constructions is that they provide a persistent model of the dataset in question across all scales. \javaPlex currently supports the construction of two main types of filtered simplicial complexes: the Vietoris-Rips and lazy-witness constructions. To begin, suppose that we have a finite metric space $(\mathcal{X}, d)$. In practice, it is possible that $\mathcal{X}$ is a set of points in Euclidean space, although this is not necessary.
 
 \subsection{The Vietoris-Rips Construction}
 We define the filtered complex $\VR(\mathcal{X}, r)$ as follows. Suppose that the points of $\mathcal{X}$ are $\{x_1, ... x_N\}$, where $N = |\mathcal{X}|$. The Vietoris-Rips complex is constructed as follows:
@@ -206,7 +207,7 @@ This construction is parameterized by a value $\nu$, which most commonly takes t
 
 \section{Homology Computation}
 
-At the core of the \javaPlex library is the set of algorithms that actually compute the homology of a filtered chain complex. Key references to background material regarding these algorithms can be found in \cite{Carlsson_04, Dualities}. Although we do not describe them in detail here, we note that the algorithms for computing persistent absolute/relative (co)homology can be formulated as matrix decomposition problems. The fundamental reason for this is the equivalence of category of persistent vector spaces of finite type, and the category finitely generated graded modules over $\mathbb{F}[t]$. This correspondence is described in \cite{Carlsson_04}. 
+The other primary function of the \javaPlex library is the set of algorithms that actually compute the homology and cohomology of a filtered chain complex. Key references to background material regarding these algorithms can be found in \cite{Carlsson_04, Dualities}. Although we do not describe them in detail here, we note that the algorithms for computing persistent absolute/relative (co)homology can be formulated as matrix decomposition problems. The fundamental reason for this is the equivalence of category of persistent vector spaces of finite type, and the category finitely generated graded modules over $\mathbb{F}[t]$. This correspondence is described in \cite{Carlsson_04}. 
 
 The homology algorithms are built in a way that is optimized for chain complexes implemented as \emph{streams}. By this we mean that a filtered chain complex is represented by a sequence of basis elements that are produced in increasing order of their filtration indices. Enforcing the constraint that all complexes must be implemented this way allows \javaPlex to perform the matrix decomposition operations in an efficient online fashion.
 
