@@ -1,7 +1,7 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2011.6.19)  10 MAY 2012 16:41
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2011.6.19)  11 MAY 2012 08:12
 entering extended mode
  %&-line parsing enabled.
-**abstract
+**abstract.tex
 (./abstract.tex
 LaTeX2e <2009/09/24>
 Babel <v3.8l> and hyphenation patterns for english, usenglishmax, dumylang, noh
@@ -149,6 +149,9 @@ LaTeX Info: Redefining \] on input line 2667.
 (/usr/share/texmf-texlive/tex/latex/ltxmisc/url.sty
 \Urlmuskip=\muskip11
 Package: url 2006/04/12  ver 3.3  Verb mode for urls, etc.
+)
+(/usr/share/texmf-texlive/tex/latex/tools/xspace.sty
+Package: xspace 2006/05/08 v1.12 Space after command names (DPC,MH)
 ) (./abstract.aux)
 \openout1 = `abstract.aux'.
 
@@ -206,7 +209,7 @@ File: images/perripsthree.pdf Graphic file (type pdf)
 
 <use images/perripsthree.pdf> [2 <./images/perripstwo.pdf> <./images/perripsthr
 ee.pdf>]
-Overfull \hbox (30.71109pt too wide) in paragraph at lines 203--204
+Overfull \hbox (30.71109pt too wide) in paragraph at lines 204--205
 []\OT1/cmr/bx/n/10 Add 1-skeleton: \OT1/cmr/m/n/10 The 1-simplex $[\OML/cmm/m/i
 t/10 l[]; l[]\OT1/cmr/m/n/10 ]$ is in $[][](\OMS/cmsy/m/n/10 X\OML/cmm/m/it/10 
 ; r; ^^W\OT1/cmr/m/n/10 )$ iff there ex-ists an $\OML/cmm/m/it/10 x \OMS/cmsy/m
@@ -225,13 +228,13 @@ File: images/barcodes_small.png Graphic file (type png)
 <use images/barcodes_small.png> [4] [5 <./images/tori_small.png (PNG copy)> <./
 images/barcodes_small.png (PNG copy)>] [6] (./abstract.aux) ) 
 Here is how much of TeX's memory you used:
- 2151 strings out of 495061
- 25265 string characters out of 1182621
- 83365 words of memory out of 3000000
- 5304 multiletter control sequences out of 15000+50000
+ 2177 strings out of 495061
+ 25767 string characters out of 1182621
+ 83659 words of memory out of 3000000
+ 5327 multiletter control sequences out of 15000+50000
  13252 words of font info for 51 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
- 34i,13n,45p,685b,358s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 34i,13n,45p,719b,358s stack positions out of 5000i,500n,10000p,200000b,50000s
 </usr/share/texmf-
 texlive/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texmf-texlive/fon
 ts/type1/public/amsfonts/cm/cmbx8.pfb></usr/share/texmf-texlive/fonts/type1/pub
@@ -252,7 +255,7 @@ ti8.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmtt10.pfb></u
 sr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmtt8.pfb></usr/share/tex
 mf-texlive/fonts/type1/public/amsfonts/cm/cmtt9.pfb></usr/share/texmf-texlive/f
 onts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on abstract.pdf (6 pages, 1077414 bytes).
+Output written on abstract.pdf (6 pages, 1077409 bytes).
 PDF statistics:
  151 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
