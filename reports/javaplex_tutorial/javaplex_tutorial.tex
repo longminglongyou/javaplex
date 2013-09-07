@@ -31,7 +31,7 @@
 \title{javaPlex Tutorial}
 
 \author{Henry Adams}
-\email[H.~Adams]{henrya@math.stanford.edu}
+\email[H.~Adams]{henrya@ima.umn.edu}
 
 \author{Andrew Tausz}
 \email[A.~Tausz]{atausz@stanford.edu}
@@ -100,7 +100,7 @@ If you are interested in javaPlex, then you may also be interested in the softwa
 
 Some of the exercises in this tutorial are borrowed from Vin de Silva's {\em Plexercises}, available at \url{http://comptop.stanford.edu/u/programs/Plexercises2.pdf}.
 
-Please email Henry at \texttt{henrya@math.stanford.edu} or Andrew at \texttt{atausz@stanford.edu} if you have questions about this tutorial.
+Please email Henry at \texttt{henrya@ima.umn.edu} or Andrew at \texttt{atausz@stanford.edu} if you have questions about this tutorial.
 
 
 \subsection{License}
@@ -1245,7 +1245,7 @@ The persistence algorithm that computes barcodes can also find a representative 
 
 A core subset of a dataset is a collection of the densest points, such as $X^5(300,30)$ in Section \ref{real}. Since there are many density estimators, and since we can choose any number of the densest points, a dataset has a variety of core subsets. In this appendix we discuss how to create core subsets. 
 
-Real datasets can be very noisy, and outlier points can signiÞcantly alter the computed topology. Therefore, instead of trying to approximate the topology of an entire dataset, we often proceed as follows. We create a family of core subsets and identify their topologies. Looking at a variety of core subsets can give a good picture of the entire dataset. 
+Real datasets can be very noisy, and outlier points can signiï¿½cantly alter the computed topology. Therefore, instead of trying to approximate the topology of an entire dataset, we often proceed as follows. We create a family of core subsets and identify their topologies. Looking at a variety of core subsets can give a good picture of the entire dataset. 
 
 See \citet{KleinBottle} and \citet{WitnessComplexes} for an example using multiple core subsets. The dataset contains high-contrast patches from natural images. The authors use three density estimators. As they change from the most global to the most local density estimate, the topologies of the core subsets change from a circle, to three intersecting circles, to a Klein bottle. 
 
@@ -1311,7 +1311,7 @@ core50 =
  
 With $k = 50$, we expect the densest points to be slightly larger than the 25-th prime, which is 97. 
 
-{\em Note:} As its name suggests, the m-file \texttt{kDensitySlow.m} is not the most efficient way to calculate $\rho_k$ for large datasets. There is a faster file \texttt{kDensity.m} for this purpose, which uses the kd-tree data structure. It is not included in the tutorial because it requires one to download a kd-tree package for Matlab, available at \url{http://www.mathworks.com/matlabcentral/fileexchange/21512-kd-tree-for-matlab}. Please email Henry at \texttt{henrya@math.stanford.edu} if you're interested in using \texttt{kDensity.m}. 
+{\em Note:} As its name suggests, the m-file \texttt{kDensitySlow.m} is not the most efficient way to calculate $\rho_k$ for large datasets. There is a faster file \texttt{kDensity.m} for this purpose, which uses the kd-tree data structure. It is not included in the tutorial because it requires one to download a kd-tree package for Matlab, available at \url{http://www.mathworks.com/matlabcentral/fileexchange/21512-kd-tree-for-matlab}. Please email Henry at \texttt{henrya@ima.umn.edu} if you're interested in using \texttt{kDensity.m}. 
 
 % What are the differences in timings between fast and slow versions?
 % It seems that k=300 is surprisingly slow with kDensity.m: 1108 seconds. Slower than kDensitySlow.m. Double check?
