@@ -18,12 +18,10 @@ function densities = kDensitySlow(points, k)
 %   for more information about the function slmetric_pw.m.
 %
 %   File kdDensitySlow.m is slow for large datasets (thus the name). If you
-%   are interested in a faster version, please email Henry at 
-%   henrya@math.stanford.edu. The faster version relies on a MATLAB kd-tree
+%   are interested in a faster version, please email Henry Adams at
+%   henrya@ima.umn.edu. The faster version relies on a MATLAB kd-tree
 %   package available here:
 %   http://www.mathworks.com/matlabcentral/fileexchange/21512-kd-tree-for-matlab
-%
-% henrya@math.stanford.edu
 
 % CONSTANTS:
 blockSize = 500; % If blockSize too small, the function will be slower than 
