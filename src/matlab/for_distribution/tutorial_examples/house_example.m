@@ -28,6 +28,12 @@ persistence = api.Plex4.getModularSimplicialAlgorithm(3, 2);
 % compute and print the intervals
 intervals = persistence.computeIntervals(stream)
 
+% Return the intervals as a Matlab array. The second input is the dimension
+% of the intervals. The third input is a boolean flag - 0 to include
+% infinite intervals, and 1 to exclude infinite intervals.
+intervals_dim0 = edu.stanford.math.plex4.homology.barcodes.BarcodeUtility.getEndpoints(intervals, 0, 0)
+intervals_dim1 = edu.stanford.math.plex4.homology.barcodes.BarcodeUtility.getEndpoints(intervals, 1, 0)
+
 % compute and print the intervals annotated with a representative cycle
 intervals = persistence.computeAnnotatedIntervals(stream)
 

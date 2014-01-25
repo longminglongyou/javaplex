@@ -435,6 +435,26 @@ Dimension: 0
 
 There are four intervals. The first is a $Betti_1$ interval, starting at filtration time 3 and ending at 7. This 1-dimensional hole is formed by the three edges of the roof. It forms when edge $[4,5]$ appears at filtration time 3 and closes when 2-simplex $[3,4,5]$ appears at filtration time 7.
 
+We can also store the intervals as Matlab matrices.
+
+\begin{quote} \begin{verbatim}
+>> intervals_dim0 = edu.stanford.math.plex4.homology.barcodes.BarcodeUtility...
+.getEndpoints(intervals, 0, 0)
+intervals_dim0 =
+
+    0    Inf
+    1    2
+    
+>> intervals_dim1 = edu.stanford.math.plex4.homology.barcodes.BarcodeUtility...
+.getEndpoints(intervals, 1, 0)
+intervals_dim1 =
+
+    0    Inf
+    3    7
+\end{verbatim} \end{quote}
+
+The second input of this command is the dimension of the intervals, and the third input is a Boolean flag --- 0 to include infinite intervals, and 1 to exclude infinite intervals.
+
 We compute a representative cycle for each barcode.
 
 \begin{quote} \begin{verbatim}
