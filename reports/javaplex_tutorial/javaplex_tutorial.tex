@@ -306,7 +306,7 @@ Dimension: 0
 
 This gives us the expected Betti numbers $Betti_0=1$ and $Betti_1=1$.
 
-We can also compute a representative cycle for each barcode.
+The persistence algorithm computing intervals can also find a representative cycle for each interval. However, there is no guarantee that the produced representative will be geometrically nice.
 
 \begin{quote} \begin{verbatim}
 >> circle_intervals = persistence.computeAnnotatedIntervals(stream)
@@ -1225,10 +1225,6 @@ sum of cells.
 The Euler characteristic is 2 = 1 - 0 + 0 - 0 + 0 - 0 + 1, using the alternating sum 
 of Betti numbers.
 \end{verbatim} \end{quote}
-
-
-\subsection{Representative cycles}
-The persistence algorithm that computes barcodes can also find a representative cycle for each barcode. We do several examples of this in Section \ref{explicitStream}. However, there is no guarantee that the produced representative will be geometrically nice. 
 
 
 %\subsection{Java heap size}
