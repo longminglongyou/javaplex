@@ -1,4 +1,4 @@
-% This script demonstrates the use of plex on a simple "house" example
+% This script demonstrates how to obtain the dimension, vertices, and filtration time of each simplex in a filtered simplicial complex.
 
 clc; clear; close all;
 
@@ -11,7 +11,6 @@ point_cloud = examples.PointCloudExamples.getHouseExample();
 
 % create a Vietoris-Rips stream 
 stream = api.Plex4.createVietorisRipsStream(point_cloud, max_dimension + 1, max_filtration_value, num_divisions);
-
 
 %% Dump Example:
 
